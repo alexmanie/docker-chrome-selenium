@@ -1,0 +1,1 @@
+GET https://localhost:44367/api/webscrapper?gln=8439000000086&gtin=08411585008381&description=test1
