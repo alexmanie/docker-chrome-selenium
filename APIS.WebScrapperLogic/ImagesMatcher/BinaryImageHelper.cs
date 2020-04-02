@@ -61,6 +61,7 @@ namespace APIS.WebScrapperLogic.ImagesMatcher
                     {
                         StartProcessingOn = DateTime.Now
                     };
+
                     try
                     {
                         image.URI = uri;
@@ -68,18 +69,19 @@ namespace APIS.WebScrapperLogic.ImagesMatcher
                         var URI = new Uri(image.URI);
 
                         image.Filename = URI.Segments.Last();
-                        image.BinaryData = webcli.DownloadData(image.URI);
-                        image.MD5 = GetMD5(image.BinaryData);
-                        image.Filesize = image.BinaryData.Length;
 
-                        var img = Image.FromStream(new MemoryStream(image.BinaryData));
-                        image.Height = img.Height;
-                        image.Width = img.Width;
-                        image.MIMEType = GetImageFormat(img);
+                        // Binary Data
+                        // image.BinaryData = webcli.DownloadData(image.URI);
+                        // image.MD5 = GetMD5(image.BinaryData);
+                        // image.Filesize = image.BinaryData.Length;
 
-                        var thumbnail = GenerateThumbnail(img);
-                        image.ThumbnailBinaryData = ImageToByteArray(thumbnail);
+                        // var img = Image.FromStream(new MemoryStream(image.BinaryData));
+                        // image.Height = img.Height;
+                        // image.Width = img.Width;
+                        // image.MIMEType = GetImageFormat(img);
 
+                        // var thumbnail = GenerateThumbnail(img);
+                        // image.ThumbnailBinaryData = ImageToByteArray(thumbnail);
                     }
                     catch (Exception e)
                     {
@@ -118,6 +120,7 @@ namespace APIS.WebScrapperLogic.ImagesMatcher
         private static ImageCodecInfo GetEncoder(ImageFormat format)
         {
             ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+
             foreach (ImageCodecInfo codec in codecs)
             {
                 if (codec.FormatID == format.Guid)
@@ -125,6 +128,7 @@ namespace APIS.WebScrapperLogic.ImagesMatcher
                     return codec;
                 }
             }
+
             return null;
         }
 
@@ -153,9 +157,8 @@ namespace APIS.WebScrapperLogic.ImagesMatcher
             var bitmapData = Convert.FromBase64String(base64String);
             var streamBitmap = new System.IO.MemoryStream(bitmapData);
             var bitmap = new Bitmap((Bitmap)Image.FromStream(streamBitmap));
+
             return bitmap;
         }
-
-
     }
 }

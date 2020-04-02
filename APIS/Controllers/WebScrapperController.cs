@@ -3,6 +3,8 @@ using APIS.WebScrapperLogic.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace APIS.Controllers
 {
@@ -15,7 +17,7 @@ namespace APIS.Controllers
         {
             try
             {
-                var result = WebScrapperService.WebScrappe(gln, path, gtin, internalCode, description);
+                WebScrappedData result = WebScrapperService.WebScrappe(gln, path, gtin, internalCode, description);
 
                 if (result == null)
                 {

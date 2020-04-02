@@ -1,0 +1,14 @@
+
+docker build --no-cache --rm -f "Dockerfile" -t dockerchromeselenium:latest "."
+
+docker run --rm -it  -p 8081:443/tcp -p 8080:80/tcp dockerchromeselenium:latest
+
+
+
+
+http://localhost:8080/api/webscrapper?gln=8439000000086&gtin=8410001102467
+http://localhost:8080/api/webscrapper?gln=8439000000086&gtin=00000050097241
+http://localhost:8080/api/webscrapper?gln=8439000000086&path=https://www.dia.es/compra-online/productos/drogueria-y-limpieza/accesorios-limpieza/estropajos/p/196056&gtin=8410001102467&internalCode=null&description=S/BRITE%20FIBRA%20VERDE%20GIGANTE%202+1%2016/CJA
+
+
+https://gs1scrapperapi-dev.azurewebsites.net/api/webscrapper?gln=8439000000086&gtin=00000059036388

@@ -86,26 +86,26 @@ namespace APIS.WebScrapperLogic.Utils
             }
         }
 
-        public static string getTextById(
-            OpenQA.Selenium.Remote.RemoteWebDriver browser,
-            string elementId)
-        {
-            IWebElement elem = null;
+        // public static string getTextById(
+        //     OpenQA.Selenium.Remote.RemoteWebDriver browser,
+        //     string elementId)
+        // {
+        //     IWebElement elem = null;
 
-            try
-            {
-                elem = browser.FindElementById(elementId);
-            }
-            catch (OpenQA.Selenium.NoSuchElementException)
-            {
-                return null;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return elem.Text;
-        }
+        //     try
+        //     {
+        //         elem = browser.FindElementById(elementId);
+        //     }
+        //     catch (OpenQA.Selenium.NoSuchElementException)
+        //     {
+        //         return null;
+        //     }
+        //     catch (Exception)
+        //     {
+        //         throw;
+        //     }
+        //     return elem.Text;
+        // }
 
         public static bool IsElementPresent(IWebDriver driver, By by)
         {
@@ -118,10 +118,14 @@ namespace APIS.WebScrapperLogic.Utils
             {
                 return false;
             }
-            catch (Exception e)
-            {
-                throw;
-            }
+            // catch (Exception ex)
+            // {
+            //     Console.ForegroundColor = ConsoleColor.Red;
+            //     Console.WriteLine($"[EXCEPTION] {ex.Message}");
+            //     Console.ResetColor();
+
+            //     throw;
+            // }
         }
 
         /// <summary>
